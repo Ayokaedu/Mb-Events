@@ -14,7 +14,7 @@ const ResetPassword = () => {
   const [show2, setShow2] = useState(false);
   const toggleShow = () => setShow(!show);
   const toggleShow2 = () => setShow2(!show2);
-  const redirect = useNavigate ()
+  const redirect = useNavigate();
   const {
     register,
     handleSubmit,
@@ -27,27 +27,27 @@ const ResetPassword = () => {
 
   const urlParams = new URLSearchParams(location.search);
   const token = urlParams.get("token");
-  console.log({ token });
-    const url = "https://mb-server-aisha.onrender.com/api/v1/reset-password";
-  const onSubmit  = async (data) => {
+  // console.log({ token });
+  const url = "https://mb-server-aisha.onrender.com/api/v1/reset-password";
+  const onSubmit = async (data) => {
     // Handle form submission logic here
     if (token) {
-        const newPassword = data.password;
-        const body = { newPassword, token };   
-        try {
-          const result = await axios.post (url, body)
-          if (result.status === 200) {
-            toast.success('Password reset is successful')
-            redirect ('/login')
-          }
-        } catch (error) {
-           toast.error(error?.response?.data?.message || error?.message,{
-      position: "top-center",
-      autoClose: 7000,
-           })
+      const newPassword = data.password;
+      const body = { newPassword, token };
+      try {
+        const result = await axios.post(url, body);
+        if (result.status === 200) {
+          toast.success("Password reset is successful");
+          redirect("/login");
+        }
+      } catch (error) {
+        toast.error(error?.response?.data?.message || error?.message, {
+          position: "top-center",
+          autoClose: 7000,
+        });
+      }
     }
   };
-}
   return (
     <div>
       <div className="vh-100 d-flex justify-content-center align-items-center reset-container">
