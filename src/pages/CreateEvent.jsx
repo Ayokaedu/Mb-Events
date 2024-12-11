@@ -99,6 +99,12 @@ const CreateEvent = () => {
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.message || error?.message);
+      if(error && error.status === 401){
+    toast.error('Session expired, login')
+    redirect('/')
+    localStorage.removeItem('mb-token')
+    localStorage('user')
+  }
       if (error && error?.status === 401) {
         toast.error("Session Expired, Login");
         localStorage.removeItem("mb-token");

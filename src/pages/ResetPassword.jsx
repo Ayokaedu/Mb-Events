@@ -51,7 +51,10 @@ const ResetPassword = () => {
   return (
     <div>
       <div className="vh-100 d-flex justify-content-center align-items-center reset-container">
-        <form onSubmit={handleSubmit(onSubmit)} className="p-2">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="p-2 position-relative"
+        >
           <Link to="/">
             <img src={logo} alt="logo" className="d-block mx-auto my-2" />
           </Link>
